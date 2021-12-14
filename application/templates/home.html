@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% block body %}
+<h2> Home </h2>
+<table>
+    <tr>
+        <th> Game No. </th>
+        <th> Game Name </th>
+        <th> Publisher </th>
+        <th> Hours </th>
+        <th> Genre </th>
+    </tr>
+    {% for task in tasks %}
+    <tr>
+        <td> {{ game.id }} </td>
+        <td><a href="{{ url_for('update', tid=task.id) }}"> {{ task.name }} </a></td>
+        <td> {{ game.publ }} </td>
+        <td> {{ game.hours }} </td>
+        <td> {{ game.genre }} </td>
+        <td><a href="{{ url_for('delete', tid=task.id) }}"> delete </a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock body %}
