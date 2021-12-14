@@ -6,7 +6,7 @@ from flask import request, render_template, redirect, url_for
 @app.route('/')
 def home():
     items = Item.query.all()
-    return render_template('home.html', tasks=items)
+    return render_template('home.html', game=items)
 
 @app.route('/add', methods = ['GET', 'POST'])
 def add():
