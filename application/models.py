@@ -5,4 +5,4 @@ class Item(db.Model):
     name = db.Column(db.String(20))
     publ = db.Column(db.String(100))
     genre = db.Column(db.Text(100))
-    hour = db.Column(db.Integer)
+    hours = db.Column(db.Integer)
