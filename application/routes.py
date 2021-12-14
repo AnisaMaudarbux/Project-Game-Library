@@ -20,7 +20,7 @@ def add():
             newgame = Item(name=name, publ=publ, genre=genre, hours=hours)
             db.session.add(newgame)
             db.session.commit()
-        return redirect(url_for('home'))
+            return redirect(url_for('home'))
     return render_template('add.html', form=form)
 
 @app.route('/update/<int:tid>', methods = ['GET', 'POST'])
