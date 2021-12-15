@@ -1,11 +1,11 @@
 from application import app, db
-from application.models import Item
+from application.models import Game
 from application.forms import AddItem, EditItem
 from flask import request, render_template, redirect, url_for
 
 @app.route('/')
 def home():
-    items = Item.query.all()
+    items = Game.query.all()
     return render_template('home.html', game=items)
 
 @app.route('/add', methods = ['GET', 'POST'])
@@ -17,7 +17,7 @@ def add():
         genre = form.genre.data
         hours = form.hours.data
         if form.validate_on_submit():
-            newgame = Item(name=name, publ=publ, genre=genre, hours=hours)
+            newgame = Game(name=name, publ=publ, genre=genre, hours=hours)
             db.session.add(newgame)
             db.session.commit()
             return redirect(url_for('home'))
@@ -26,7 +26,7 @@ def add():
 @app.route('/update/<int:tid>', methods = ['GET', 'POST'])
 def update(tid):
     form = EditItem()
-    item = Item.query.get(tid)
+    item = Game.query.get(tid)
     if request.method == 'POST' and form.validate_on_submit():
         item.name = form.name.data
         item.publ = form.publ.data
@@ -38,7 +38,7 @@ def update(tid):
 
 @app.route('/delete/<int:tid>')
 def delete(tid):
-    item = Item.query.get(tid)
+    item = Game.query.get(tid)
     db.session.delete(item)
     db.session.commit()
     return redirect(url_for('home'))
