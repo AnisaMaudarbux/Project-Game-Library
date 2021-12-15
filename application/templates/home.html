@@ -12,7 +12,7 @@
     {% for game in game %}
     <tr>
         <td> {{ game.id }} </td>
-        <td><a href="{{ url_for('update', tid=game.id) }}"> {{ game.name }} </a></td>
+        <td> {{ game.name }} </td>
         <td> {{ game.publ }} </td>
         <td> {{ game.hours }} </td>
         <td> {{ game.genre }} </td>
