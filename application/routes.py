@@ -13,11 +13,11 @@ def add():
     form = AddItem()
     if request.method == 'POST':
         name = form.name.data
-        publ = form.publ.data
+        dev = form.dev.data
         genre = form.genre.data
         hours = form.hours.data
         if form.validate_on_submit():
-            newgame = Game(name=name, publ=publ, genre=genre, hours=hours)
+            newgame = Game(name=name, dev=dev, genre=genre, hours=hours)
             db.session.add(newgame)
             db.session.commit()
             return redirect(url_for('home'))
@@ -29,7 +29,7 @@ def update(tid):
     item = Game.query.get(tid)
     if request.method == 'POST' and form.validate_on_submit():
         item.name = form.name.data
-        item.publ = form.publ.data
+        item.dev = form.dev.data
         item.hours = form.hours.data
         item.genre = form.genre.data
         db.session.commit()
