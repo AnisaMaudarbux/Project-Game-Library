@@ -8,7 +8,7 @@ def home():
     items = Game.query.all()
     return render_template('home.html', game=items)
 
-@app.route('/add/<int:service>', methods = ['GET', 'POST'])
+@app.route('/add', methods = ['GET', 'POST'])
 def add():
     form = AddItem()
     if request.method == 'POST':

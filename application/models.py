@@ -9,5 +9,6 @@ class Game(db.Model):
     service = db.Column(db.String, db.ForeignKey('platform.service'))
 
 class Platform(db.Model):
-    service = db.Column(db.String(20), primary_key = True)
+    platform_id = db.Column(db.Integer, primary_key = True)
+    service = db.Column(db.Text(25))
     connection = db.relationship('Game', backref = 'platform')
