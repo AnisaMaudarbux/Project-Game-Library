@@ -8,6 +8,7 @@
         <th> Developer </th>
         <th> Hours </th>
         <th> Genre </th>
+        <th> Platform </th>
     </tr>
     {% for game in game %}
     <tr>
@@ -16,6 +17,7 @@
         <td> {{ game.dev }} </td>
         <td> {{ game.hours }} </td>
         <td> {{ game.genre }} </td>
+        <td> {{ game.platform}}</td>
         <td><a href="{{ url_for('delete', tid=game.id) }}"> delete </a></td>
     </tr>
     {% endfor %}

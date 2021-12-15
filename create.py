@@ -1,6 +1,7 @@
 from application import db 
-from application.models import  Platform
+from application.models import  Platform, Game
 
+db.drop_all()
 db.create_all()
 
 Rayman = Platform(service = 'PC') #Add example to countries table
