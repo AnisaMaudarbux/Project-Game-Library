@@ -9,14 +9,14 @@
         <th> Hours </th>
         <th> Genre </th>
     </tr>
-    {% for task in tasks %}
+    {% for game in game %}
     <tr>
         <td> {{ game.id }} </td>
-        <td><a href="{{ url_for('update', tid=task.id) }}"> {{ task.name }} </a></td>
+        <td><a href="{{ url_for('update', tid=game.id) }}"> {{ game.name }} </a></td>
         <td> {{ game.publ }} </td>
         <td> {{ game.hours }} </td>
         <td> {{ game.genre }} </td>
-        <td><a href="{{ url_for('delete', tid=task.id) }}"> delete </a></td>
+        <td><a href="{{ url_for('delete', tid=game.id) }}"> delete </a></td>
     </tr>
     {% endfor %}
 </table>
