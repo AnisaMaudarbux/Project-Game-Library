@@ -6,9 +6,9 @@ class Game(db.Model):
     dev = db.Column(db.String(100))
     genre = db.Column(db.Text(100))
     hours = db.Column(db.Integer)
-    service = db.Column(db.String, db.ForeignKey('platform.service'))
+    platform = db.Column(db.String, db.ForeignKey('engine.platform'))
 
-class Platform(db.Model):
+class Engine(db.Model):
     platform_id = db.Column(db.Integer, primary_key = True)
-    service = db.Column(db.Text(25))
-    connection = db.relationship('Game', backref = 'platform')
+    platform = db.Column(db.Text(25))
+    connection = db.relationship('Game', backref = 'engine')

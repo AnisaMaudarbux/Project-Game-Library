@@ -1,7 +1,8 @@
 from application import app, db
-from application.models import Game
+from application.models import Game, Engine
 from application.forms import AddItem, EditItem
 from flask import request, render_template, redirect, url_for
+from wtforms.validators import DataRequired
 
 @app.route('/')
 def home():
@@ -16,10 +17,14 @@ def add():
         dev = form.dev.data
         genre = form.genre.data
         hours = form.hours.data
+        platform = form.hours.data
         if form.validate_on_submit():
-            newgame = Game(name=name, dev=dev, genre=genre, hours=hours)
+            newgame = Game(name=name, dev=dev, genre=genre, hours=hours, platform=platform)
             db.session.add(newgame)
             db.session.commit()
+            if input == (name=='Rayman'):
+                db.session.print(Engine(platform[0]))
+
             return redirect(url_for('home'))
     return render_template('add.html', form=form)
 
@@ -42,3 +47,4 @@ def delete(tid):
     db.session.delete(item)
     db.session.commit()
     return redirect(url_for('home'))
+
