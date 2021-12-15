@@ -1,11 +1,8 @@
 from application import db 
 from application.models import  Engine, Game
 
-db.drop_all()
 db.create_all()
 
-Rayman = Engine(platform = 'PC') #Add example to countries table
-Pokemon_X= Engine(platform = '2DS')
-db.session.add(Rayman)
-db.session.add(Pokemon_X)
+testgame = Engine(platform = 'PC', platform_id = '1') #Add example to countries table
+db.session.add(testgame)
 db.session.commit()

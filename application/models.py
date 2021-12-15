@@ -10,5 +10,5 @@ class Game(db.Model):
 
 class Engine(db.Model):
     platform_id = db.Column(db.Integer, primary_key = True)
-    platform = db.Column(db.Text(25))
+    platform = db.Column(db.String(25))
     connection = db.relationship('Game', backref = 'engine')

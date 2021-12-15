@@ -1,3 +1,4 @@
+from sqlalchemy.sql.schema import ForeignKey
 from application import app, db
 from application.models import Game, Engine
 from application.forms import AddItem, EditItem
@@ -17,15 +18,11 @@ def add():
         dev = form.dev.data
         genre = form.genre.data
         hours = form.hours.data
-        platform = form.hours.data
         if form.validate_on_submit():
-            newgame = Game(name=name, dev=dev, genre=genre, hours=hours, platform=platform)
+            newgame = Game(name=name, dev=dev, genre=genre, hours=hours)
             db.session.add(newgame)
             db.session.commit()
-            if input == (name=='Rayman'):
-                db.session.print(Engine(platform[0]))
-
-            return redirect(url_for('home'))
+        return redirect(url_for('home'))
     return render_template('add.html', form=form)
 
 @app.route('/update/<int:tid>', methods = ['GET', 'POST'])
@@ -48,3 +45,9 @@ def delete(tid):
     db.session.commit()
     return redirect(url_for('home'))
 
+@app.route('/info/<platform>')
+def info(platform):
+    console = Engine.query.first()  
+    console.platform = platform
+    db.session.commit()
+    return console.platform + platform
