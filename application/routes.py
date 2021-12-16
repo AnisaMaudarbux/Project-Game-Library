@@ -1,24 +1,26 @@
+from sqlalchemy.sql.schema import ForeignKey
 from application import app, db
-from application.models import Item
+from application.models import Game, Engine
 from application.forms import AddItem, EditItem
 from flask import request, render_template, redirect, url_for
+from wtforms.validators import DataRequired
 
 @app.route('/')
 def home():
-    items = Item.query.all()
-    return render_template('home.html', tasks=items)
+    items = Game.query.all()
+    return render_template('home.html', game=items)
 
 @app.route('/add', methods = ['GET', 'POST'])
 def add():
     form = AddItem()
     if request.method == 'POST':
         name = form.name.data
-        publ = form.publ.data
+        dev = form.dev.data
         genre = form.genre.data
         hours = form.hours.data
         if form.validate_on_submit():
-            newitem = Item(name=name, publ=publ, genre=genre, hours=hours)
-            db.session.add(newitem)
+            newgame = Game(name=name, dev=dev, genre=genre, hours=hours)
+            db.session.add(newgame)
             db.session.commit()
         return redirect(url_for('home'))
     return render_template('add.html', form=form)
@@ -26,10 +28,10 @@ def add():
 @app.route('/update/<int:tid>', methods = ['GET', 'POST'])
 def update(tid):
     form = EditItem()
-    item = Item.query.get(tid)
+    item = Game.query.get(tid)
     if request.method == 'POST' and form.validate_on_submit():
         item.name = form.name.data
-        item.publ = form.dpubl.data
+        item.dev = form.dev.data
         item.hours = form.hours.data
         item.genre = form.genre.data
         db.session.commit()
@@ -38,7 +40,7 @@ def update(tid):
 
 @app.route('/delete/<int:tid>')
 def delete(tid):
-    item = Item.query.get(tid)
+    item = Game.query.get(tid)
     db.session.delete(item)
     db.session.commit()
     return redirect(url_for('home'))

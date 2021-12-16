@@ -5,3 +5,4 @@ wtforms
 flask_testing
 datetime
 gunicorn
+flask_inputs
