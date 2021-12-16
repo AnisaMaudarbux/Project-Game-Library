@@ -4,7 +4,7 @@ from application.models import  Engine, Game
 db.drop_all()
 db.create_all()
 
-game = Game(name='Rayman', console='PC')
+game = Game(name='Rayman', platform='PC')
 db.session.add(game)
 db.session.commit()
 
@@ -12,4 +12,4 @@ thing = Engine(platform = 'PC', platform_id = '1') #Add example to countries tab
 db.session.add(thing)
 db.session.commit()
 
-print (f"Game is {Game.name}, console played on, {Engine.platform}") 
+print (f"Game is {game.name}, console played on, {thing.platform}") 
