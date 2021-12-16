@@ -1,4 +1,5 @@
-from application import db 
+from flask_sqlalchemy import SQLAlchemy
+from application import db
 from application.models import  Engine, Game
 
 db.drop_all()
