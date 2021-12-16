@@ -9,11 +9,3 @@ services:
     ports:
     - target: 5000
       published: 5000
-      
-  backend:
-    container_name: backend
-    build: ./backend
-    image: anisa18/database
-    ports:
-    - target: 5001
-      published: 5001
