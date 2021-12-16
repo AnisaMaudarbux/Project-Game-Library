@@ -44,10 +44,3 @@ def delete(tid):
     db.session.delete(item)
     db.session.commit()
     return redirect(url_for('home'))
-
-@app.route('/info/<platform>')
-def info(platform):
-    console = Engine.query.first()  
-    console.platform = platform
-    db.session.commit()
-    return console.platform + platform

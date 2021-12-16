@@ -1,8 +1,15 @@
 from application import db 
 from application.models import  Engine, Game
 
+db.drop_all()
 db.create_all()
 
-testgame = Engine(platform = 'PC', platform_id = '1') #Add example to countries table
-db.session.add(testgame)
+game = Game(name='Rayman', console='PC')
+db.session.add(game)
 db.session.commit()
+
+thing = Engine(platform = 'PC', platform_id = '1') #Add example to countries table
+db.session.add(thing)
+db.session.commit()
+
+print (f"Game is {Game.name}, console played on, {Engine.platform}") 
