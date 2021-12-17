@@ -10,3 +10,6 @@ requirements.txt holds all the requirements for my webapp to run aslo used in th
 The Dockerfile starts the containerisation and installs the requirements.txt and tells the container to start from creat.py and app.py. It also copies the whole of the frontend folder into the container.
 The docker compose file automates the process it names the container and shows the port it is open to.
 The jenkins file automates the process it stages the process to build and deploy the file. It builds the file to jenkins and then deploys it to docker hub.
+
+*Add the ssh to the vm to connect* 
+*eof tag to make a file will end it (please google)*
