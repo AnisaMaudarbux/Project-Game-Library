@@ -12,3 +12,4 @@ The docker compose file automates the process it names the container and shows t
 The jenkins file automates the process it stages the process to build and deploy the file. It builds the file to jenkins and then deploys it to docker hub.
 
 *Add the ssh to the vm to connect* 
+*eof tag to make a file will end it (please google)*
